@@ -1,0 +1,72 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    background-color: #333;
+    display: flex;
+    flex-wrap: wrap; /* ✅ Allow nav items to wrap */
+}
+
+nav ul li {
+    flex: 1 1 auto; /* ✅ Let them shrink and grow */
+    text-align: center;
+}
+
+nav ul li a {
+    color: white;
+    padding: 14px 20px;
+    text-decoration: none;
+    display: block;
+    white-space: nowrap; /* Keep text on one line */
+}
+
+nav ul li a:hover {
+    background-color: #111;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+p {
+    text-align: center;
+}
+
+/* ✅ Responsive scaling for program boxes */
+.program-list {
+    display: flex;
+    flex-wrap: wrap; /* ✅ Allow wrapping instead of cropping */
+    justify-content: center;
+    gap: 10px;
+}
+
+.program-item {
+    flex: 1 1 150px; /* ✅ Min width 150px, shrink if needed */
+    max-width: 200px;
+    text-align: center;
+    background: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Optional smaller tweak for tiny screens */
+@media (max-width: 480px) {
+    nav ul li a {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
