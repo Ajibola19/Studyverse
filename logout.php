@@ -1,16 +1,23 @@
 <?php
+// 1. Always start the session first so PHP knows which one to kill
 session_start();
 
-// Unset all session variables
-$_SESSION = [];
+// 2. Clear all session variables
+$_SESSION = array();
 
-// Destroy the session
+// 3. If it's desired to kill the session, also delete the session cookie.
+if (ini_get("session.use_cookies")) {
+    $params = session_get_cookie_params();
+    setcookie(session_name(), '', time() - 42000,
+        $params["path"], $params["domain"],
+        $params["secure"], $params["httponly"]
+    );
+}
+
+// 4. Finally, destroy the session.
 session_destroy();
 
-// Regenerate session ID for security
-session_regenerate_id(true);
-
-// Redirect to login page
-header('Location: login.php');
-exit;
+// 5. Redirect to login page
+header("Location: login.php");
+exit();
 ?>
