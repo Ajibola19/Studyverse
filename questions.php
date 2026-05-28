@@ -397,6 +397,17 @@ if (empty($questions)) {
     };
 
     loadQuestion();
+
+    // 1. Push a fake state so there is "somewhere" to go back to that is still this page
+    window.history.pushState(null, null, window.location.href);
+
+    window.onpopstate = function () {
+        // 2. When the back button is pressed, push the state again to stay here
+        window.history.pushState(null, null, window.location.href);
+        
+        // Optional: Alert the user why they can't go back
+        alert("Back navigation is disabled during the quiz/result to protect your progress or you can use the quit button to go back.");
+    };
 </script>
 </body>
 </html>
